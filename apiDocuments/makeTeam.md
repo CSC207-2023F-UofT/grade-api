@@ -88,5 +88,5 @@ Make a team (everyone in the same team can see each other's grades...)
 {
    "status_code": 500,
    "message": "Error making team"
-}, 500
+}
 ```
