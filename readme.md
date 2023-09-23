@@ -1,19 +1,19 @@
 # Lab 3: Grade API program
 
+**Please try to work through Tasks 0 and 1 ahead of your lab time on Monday.
+Your team and TA can help you during the lab if you had any trouble,
+so don't worry if you don't get through Task 1 before lab. There will also
+be some time to do this as your TA helps everyone get into teams.**
+
+
 ## Task 0: Fork and clone this repo
 
-1. As with the previous lab activities, start
-by making a fork of this repo and cloning it.
-
+1. As with the previous lab activities, start by making a fork of this repo and cloning it.
 
 ## Task 1: Your API Token
 
-**Please try to work through these steps ahead of your lab time on Monday. Your team and TA can
-help you during the lab if you had any trouble, so don't worry if you don't get through Task 1 before lab.**
-
-In order to use the Grade API, you will need
-to use an API Token. To obtain your token, we are going to make a simple request
-to the Grade API.
+In order to use the Grade API, you will need to use an API Token.
+To obtain your token, we are going to make a simple request to the Grade API.
 
 1. Go to https://hoppscotch.io. This is a tool like Postman, which can be used to quickly interact with APIs.
 2. Beside the word GET, replace https://echo.hoppscotch.io/ with https://grade-logging-api.chenpan.ca/signUp.
@@ -26,9 +26,9 @@ during the lab. (Don't worry, you can repeat this process with a new username if
 5. Press the `Send` button to make the request. You may receive an error that the request didn't go through. Scroll down and
 select `proxy` as the middleware and press `Send` again. You should now see the result of the request.
 6. If the username had been used before, you will see a response indicating that. Choose a new username and send the
-request again. Copy your API token somewhere, as you will need that during the lab.
+request again.
 
-You can refer to `apiDocuments/signUp.md` in this repo for the documentation of this API request.
+You can also refer to `apiDocuments/signUp.md` in this repo for the documentation of this API request.
 
 ***
 
@@ -37,31 +37,32 @@ with `USERNAME` replaced with the username you want to use.
 
 ***
 
-and log in with your teach.cs account.
+7. Create a new file called `username.txt` in the root directory of your project and record your
+   username and API token in that file. This file is indicated in the `.gitignore` for your project, so
+   its name will appear yellow in IntelliJ to indicate that git will ignore the file (it won't be version
+   controlled). This can be useful to ensure that you don't accidentally share private information
+   (like personal API tokens) or configurations specific to your local environment when working on a
+   team project.
 
-Your API Token will be displayed. Keep the webpage open
-or save the token somewhere as we will need it when using the Grade API.
+Now that you have your API token, the last step is to get your program to use it. To do so, we
+are going to set an environment variable in the run configuration.
 
-This API Token is solely for your use, so we don't want to share
-it with anyone else. In particular, you want to make sure not to accidentally
-add it to your version control system. Each member of your team will have
-their own personal API Token, so this information should not be shared. There are
-different ways to achieve this, but we'll take one approach here which
-is to use an environment variable when running the program.
+8. Try running the main application (`src/main/java/app/gui/GUI`). When you start the program,
+you will see that it says your API Token is null (since we didn't set it yet).
+Stop the program and go to `Run -> Edit Configurations...`.
 
-2. Try running the main application. When you attempt to perform a request
-like entering a grade, you'll get an error, since we have not yet set your
-API Token. Stop the program and go to `Run -> Edit Configurations...`.
-
-3. Open the Run Configuration for `Main` and find the `Environment Variables:`
+9. Open the Run Configuration for `GUI` and find the `Environment Variables:`
 field.
-4. In that field, type `API_TOKEN=YOUR_TOKEN`, with YOUR_TOKEN replaced with your
-actual API Token from step 1.
-5. Click `Apply` and then `OK`.
-6. Now, rerun the program and enter a grade for `207` in the `Log a Grade` menu. You should see a popup
+10. In that field, type `API_TOKEN=YOUR_TOKEN`, with YOUR_TOKEN replaced with your
+actual API Token which you saved in `username.txt`.
+11. Click `Apply` and then `OK`.
+12. Now, rerun the program and you should see your API token displayed.
+13. Enter a valid grade for `207` in the `Log a Grade` menu. You should see a popup
 telling you that your grade was successfully entered. You can then check your grade
-by using the `Get a Grade` menu and specifying your utorid and `207` for the course.
+by using the `Get a Grade` menu and specifying your username and `207` for the course.
 
+You are now ready to use the program! The following task will be completed with your
+team during the lab. First, make sure everyone has successfully completed the steps above.
 
 ## Task 2: Forming a team
 
@@ -74,18 +75,21 @@ be picking team names and duplicate names aren't allowed.
 
 2. Have one member of your team form a team with the name your team chose.
 
-3. Each other member of the team should use the `Join a team` menu to request to join the team.
+3. Each other member of the team should then join the team. Make sure you see the popup
+confirming that you successfully joined the team.
 
-4. Current members of the team can then use the `Handle a new member request` menu to accept
-new member requests.
+4. Try looking up the grade another team member entered for `207` using the `Get a Grade` menu.
 
-5. Use the `See my team members` menu to confirm that you have all gotten onto your team.
+Now that you are all on the team, there is one coding task for your team to work on today!
 
-6. Try looking up the grade another team member entered for `207` using the `Get a Grade` menu.
+***
 
-Now that you are all on the team, there is one small coding task for your
-team to work through.
+Note: If your team finds it convenient to work on parts of this lab on a common machine,
+you can create different run configurations (copy an existing one) which each use a different
+`API_TOKEN` environment variable. Then you can run multiple instances of the program and
+enter requests as different users.
 
+***
 
 ## Task 3: Coding a new feature
 
@@ -97,25 +101,27 @@ Aim to come up with one feature per team member.
 
 2. For each feature, think about whether it is possible to implement, given the current functionality
 provided by the Grade API. If it isn't possible, identify what new capabilities would need to be added.
-And if it is possible, think about what the computational steps would be to add the feature
-to the program.
+And if it is possible, think about what the steps would need to be taken to implement the
+feature in the program.
 
-3. As a team, develop a plan for implementing a feature which you feel is possible to implement
-by using the existing Grade API. See below for a suggested feature if your group isn't sure which one
-to work on.
+3. You may have noticed that the functionality for `My Team -> Get Average Grade` isn't actually
+implemented yet (see the TODOs in the code). As a team, work to implement this feature and confirm
+that it works.
 
-Suggested Feature:
+Note: Your team can choose how you want to work on this part, but below is our suggestions.
 
-Calculate the average grade of all team members in a given course. This can be achieved
-using the existing Grade API.
+Suggested logistics: One of you should invite the others to collaborate on their fork of the
+original repo on GitHub. You can do this in your repo on GitHub under `Settings -> Collaborators`.
+This will allow you to push branches to a common repo and then use pull requests to contribute
+your code and review.
 
-For the feature, you will need to:
+## Task 4 Bonus
 
-- add a new button for it (follow the template provided)
-- add a use case class for it (follow the template provided)
+If your team finishes the above task and has extra time, we encourage you to go through
+the code base in more detail and think critically about the structure of the code. What
+strikes you as being good design? What feels like it could be improved or restructured to
+make the code better? How easy would it be to implement new functionality into the program?
 
-Your team can work together or divide into subteams to tackle each necessary piece...
-
-Note: One of you should invite the others
-to one project so that you can push to a common repo.
-Remember to work on a branch and use a pull request to contribute your code and review.
+In lecture this week, we will finish our initial tour of Clean Architecture with a full
+example designed with Clean Architecture in mind. You might find it useful to revisit this
+code base after to see what parts align with Clean Architecture and which parts do not.
