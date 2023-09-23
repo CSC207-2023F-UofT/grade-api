@@ -8,12 +8,34 @@ by making a fork of this repo and cloning it.
 
 ## Task 1: Your API Token
 
+**Please try to work through these steps ahead of your lab time on Monday. Your team and TA can
+help you during the lab if you had any trouble, so don't worry if you don't get through Task 1 before lab.**
+
 In order to use the Grade API, you will need
-to use an API Token.
+to use an API Token. To obtain your token, we are going to make a simple request
+to the Grade API.
 
-1. To obtain your token, go to:
+1. Go to https://hoppscotch.io. This is a tool like Postman, which can be used to quickly interact with APIs.
+2. Beside the word GET, replace https://echo.hoppscotch.io/ with https://grade-logging-api.chenpan.ca/signUp.
 
-https://wwwcgi.teach.cs.toronto.edu/~csc207h/cgi-bin/fall/test/test-cgi
+Next, we need to specify the username which we want to sign up with. To do this, we add a parameter.
+
+3. In the Parameters tab, choose `+ Add new` and set the parameter name to `utorid`.
+4. For its value, choose whatever username you want to use. Make note of the name you choose, as you'll use it
+during the lab. (Don't worry, you can repeat this process with a new username if you need to later!)
+5. Press the `Send` button to make the request. You may receive an error that the request didn't go through. Scroll down and
+select `proxy` as the middleware and press `Send` again. You should now see the result of the request.
+6. If the username had been used before, you will see a response indicating that. Choose a new username and send the
+request again. Copy your API token somewhere, as you will need that during the lab.
+
+You can refer to `apiDocuments/signUp.md` in this repo for the documentation of this API request.
+
+***
+
+Alternative to the above: Enter `https://grade-logging-api.chenpan.ca/signUp?utorid=USERNAME` in any web browser
+with `USERNAME` replaced with the username you want to use.
+
+***
 
 and log in with your teach.cs account.
 
