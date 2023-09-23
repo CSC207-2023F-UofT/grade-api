@@ -87,6 +87,6 @@ Make a team (everyone in the same team can see each other's grades...)
 ```json
 {
    "status_code": 500,
-   "message": "Error retrieving grade"
+   "message": "Error making team"
 }, 500
 ```
