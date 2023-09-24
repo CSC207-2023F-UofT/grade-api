@@ -1,6 +1,6 @@
 # Get a grade
 
-Get the grade of a specified course.
+Get a grade for a course for a specific UTORid. One can only access grades for themselves or the others in the same team.
 
 **URL** : `/grade`
 
@@ -21,14 +21,21 @@ Get the grade of a specified course.
 
 **Code** : `200 OK`
 
-**Content example** : 
+**Content example** :
 
 ```json
 {
-    "grade": 87,
-    "message": "Grade retrieved successfully",
-    "status_code": 200,
+  "grade": {
+    "_id": {
+      "$oid": "64b85b05e66b09ca82769e67"
+    },
+    "course": "CSC207",
+    "grade": 85,
     "utorid": "t1chenpa"
+  },
+  "message": "Grade retrieved successfully",
+  "status_code": 200,
+  "utorid": "t1chenpa"
 }
 ```
 
