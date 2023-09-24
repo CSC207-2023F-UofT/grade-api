@@ -1,8 +1,6 @@
 # Get a grade
 
-Get a grade of a course.
-
-** TODO: make `course` optional. If course is not specified, all grades should be returned.
+Get the grade of a specified course.
 
 **URL** : `/grade`
 
@@ -53,7 +51,9 @@ Get a grade of a course.
 
 ### API Token is invalid
 
-**Condition** : The given authorization token doesn't match with the ones that have the access to the utorid. Or the authorization token doesn't exist. Students need to log in their teach lab account to see the token at https://wwwcgi.teach.cs.toronto.edu/~csc207h/cgi-bin/fall/test/test-cgi.
+**Condition** : The given authorization token doesn't match with the ones that have the access to the utorid.
+Or the authorization token doesn't exist. See the documentation for signUp for how to get a token.
+
 **Code** : `401`
 
 **Content example** :

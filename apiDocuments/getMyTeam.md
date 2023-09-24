@@ -54,7 +54,9 @@ Return the team (team name + members) that you are in.
 
 ### API Token is invalid
 
-**Condition** : The given authorization token doesn't match with the ones that have the access to the utorid. Or the authorization token doesn't exist. Students need to log in their teach lab account to see the token at https://grade-logging-api.chenpan.ca/signUp?utorid=
+**Condition** : The given authorization token doesn't match with the ones that have the access to the utorid. Or the authorization token doesn't exist.
+See the documentation for signUp for how to get a token.
+
 **Code** : `401`
 
 **Content example** :

@@ -1,6 +1,6 @@
 # Record a grade
 
-Rcord a grade of a course for a utorid.
+Record a grade of a course for a utorid.
 
 **URL** : `/grade`
 
@@ -65,7 +65,9 @@ Rcord a grade of a course for a utorid.
 
 ### API Token is invalid
 
-**Condition** : The given authorization token doesn't match with the ones that have the access to the utorid. Or the authorization token doesn't exist. Students need to log in their teach lab account to see the token at https://wwwcgi.teach.cs.toronto.edu/~csc207h/cgi-bin/fall/test/test-cgi.
+**Condition** : The given authorization token doesn't match with the ones that have the access to the utorid. Or the authorization token doesn't exist.
+See the documentation for signUp for how to get a token.
+
 **Code** : `401`
 
 **Content example** :
