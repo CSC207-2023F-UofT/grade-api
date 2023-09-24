@@ -84,5 +84,5 @@ Or the authorization token doesn't exist. See the documentation for signUp for h
 {
    "status_code": 500,
    "message": "Error retrieving grade"
-}, 500
+}
 ```
