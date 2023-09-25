@@ -14,7 +14,7 @@ public interface GradeDB {
 
     Team joinTeam(String name) throws JSONException;
 
-    void getMyTeam() throws JSONException;
+    String[] getMyTeam() throws JSONException;
 
     void leaveTeam() throws JSONException;
 
