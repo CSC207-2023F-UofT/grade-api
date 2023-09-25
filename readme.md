@@ -47,12 +47,23 @@ with `USERNAME` replaced with the username you want to use.
 Now that you have your API token, the last step is to get your program to use it. To do so, we
 are going to set an environment variable in the run configuration.
 
+Note: at this point you should be able to run the program, but it is possible that the Maven
+project didn't automatically build. If you have errors which won't let you run the code in the
+next step, you may need to reload the Maven project. You can do this by right-clicking on the
+`pom.xml` file in your project. In the context menu, choose `Maven -> reload project`. This should
+resolve any errors.
+
 8. Try running the main application (`src/main/java/app/gui/GUI`). When you start the program,
 you will see that it says your API Token is null (since we didn't set it yet).
 Stop the program and go to `Run -> Edit Configurations...`.
 
 9. Open the Run Configuration for `GUI` and find the `Environment Variables:`
 field.
+    - Note: If you don't see this Run Configuration listed:
+      - create a new Run Configuration of type `Application` (use the +
+      in the top left corner of the window).
+      - where it says "Main class", type `app.gui.GUI`.
+
 10. In that field, type `API_TOKEN=YOUR_TOKEN`, with YOUR_TOKEN replaced with your
 actual API Token which you saved in `username.txt`.
 11. Click `Apply` and then `OK`.
