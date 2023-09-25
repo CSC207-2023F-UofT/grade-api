@@ -201,7 +201,6 @@ public class MongoGradeDB implements GradeDB {
                 .addHeader("Authorization", API_TOKEN)
                 .addHeader("Content-Type", "application/json")
                 .build();
-        ArrayList<String> ids = new ArrayList<>();
 
         try {
             Response response = client.newCall(request).execute();
