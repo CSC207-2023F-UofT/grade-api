@@ -186,10 +186,35 @@ public class MongoGradeDB implements GradeDB {
     }
 
     @Override
-    // TODO: Implement this method
-    //       Hint: Read apiDocuments/getMyTeam.md and refer to the above
-    //             methods to help you write this code (copy-and-paste + edit as needed).
     public Team getMyTeam() {
-        return null;
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url(String.format("https://grade-logging-api.chenpan.ca/team"))
+                .addHeader("Authorization", API_TOKEN)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            System.out.println(response);
+            JSONObject responseBody = new JSONObject(response.body().string());
+
+            if (responseBody.getInt("status_code") == 200) {
+                JSONObject team = responseBody.getJSONObject("team");
+                JSONArray membersArray = team.getJSONArray("members");
+                String[] stringArray = new String[membersArray.length()];
+                for (int i = 0; i < membersArray.length(); i++) {
+                    stringArray[i]= String.valueOf(membersArray.getJSONObject(i));
+                }
+                return Team.builder()
+                        .name(team.getString("name"))
+                        .members(stringArray)
+                        .build();
+            } else {
+                throw new RuntimeException(responseBody.getString("message"));
+            }
+        } catch (IOException | JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
