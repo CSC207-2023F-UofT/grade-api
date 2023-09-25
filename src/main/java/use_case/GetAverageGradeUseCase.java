@@ -1,6 +1,5 @@
 package use_case;
 import api.GradeDB;
-import entity.Grade;
 import entity.Team;
 
 public final class GetAverageGradeUseCase {
@@ -11,7 +10,13 @@ public final class GetAverageGradeUseCase {
     }
 
     public float getAverageGrade(String course) {
-        // TODO: Get average grade for all students in your team.
-        return 0.0f;
+        Team currTeam = this.gradeDB.getMyTeam();
+        String[] teamMembers = currTeam.getMembers();
+        float summy = 0;
+        for (String teamMember : teamMembers) {
+            int currGrade = this.gradeDB.getGrade(teamMember, course).getGrade();
+            summy += currGrade;
+        }
+        return summy / teamMembers.length;
     }
 }
