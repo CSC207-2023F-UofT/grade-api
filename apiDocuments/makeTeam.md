@@ -12,8 +12,7 @@ Make a team (note: everyone in the same team can see each other's grades)
 **Required Request Body**
 ```json
 {
-    "name": "The name of the team",
-    "utorid": "The utorid"
+    "name": "The name of the team"
 }
 ```
 ## Success Responses
