@@ -192,12 +192,8 @@ public class MongoGradeDB implements GradeDB {
     public String[] getMyTeam() {
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
-        MediaType mediaType = MediaType.parse("application/json");
-        JSONObject requestBody = new JSONObject();
-        RequestBody body = RequestBody.create(mediaType, requestBody.toString());
         Request request = new Request.Builder()
-                .url("https://grade-logging-api.chenpan.ca/team")
-                .method("GET", body)
+                .url(String.format("https://grade-logging-api.chenpan.ca/team"))
                 .addHeader("Authorization", API_TOKEN)
                 .addHeader("Content-Type", "application/json")
                 .build();
