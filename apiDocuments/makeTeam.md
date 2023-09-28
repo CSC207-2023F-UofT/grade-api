@@ -12,13 +12,12 @@ Make a team (note: everyone in the same team can see each other's grades)
 **Required Request Body**
 ```json
 {
-    "name": "The name of the team",
-    "utorid": "The utorid"
+    "name": "The name of the team"
 }
 ```
 ## Success Responses
 
-**Condition** : The team name has not be taken yet. And the utorid is not in a team yet.
+**Condition** : The team name has not be taken yet. And the username associated with this authorization token is not in a team yet.
 
 **Code** : `200 OK`
 
@@ -26,8 +25,17 @@ Make a team (note: everyone in the same team can see each other's grades)
 
 ```json
 {
-    "message": "Grade updated successfully",
-    "status_code": 200
+  "message": "Team Tes created successfully",
+  "status_code": 200,
+  "team": {
+    "_id": {
+      "$oid": "650ba3ec3c1af072a1abb6c5"
+    },
+    "members": [
+      "t1chenpa"
+    ],
+    "name": "Tes"
+  }
 }
 ```
 

@@ -12,7 +12,7 @@ Return the team (team name + members) that you are in.
 
 ## Success Responses
 
-**Condition** : The UTORid is in a team.
+**Condition** : The username associated with this authorization token is in a team.
 
 **Code** : `200 OK`
 
