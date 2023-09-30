@@ -1,22 +1,25 @@
 package use_case;
+
 import api.GradeDB;
 import entity.Team;
 
-public final class GetAverageGradeUseCase {
+public class MaxGradeUseCase {
     private final GradeDB gradeDB;
 
-    public GetAverageGradeUseCase(GradeDB gradeDB) {
+    public MaxGradeUseCase(GradeDB gradeDB) {
         this.gradeDB = gradeDB;
     }
 
-    public float getAverageGrade(String course) {
+    public float getHighestGrade(String course) {
         Team currTeam = this.gradeDB.getMyTeam();
         String[] teamMembers = currTeam.getMembers();
-        float summy = 0;
+        int highest = this.gradeDB.getGrade(teamMembers[0], course).getGrade();
         for (String teamMember : teamMembers) {
             int currGrade = this.gradeDB.getGrade(teamMember, course).getGrade();
-            summy += currGrade;
+            if (currGrade > highest) {
+                highest = currGrade;
+            }
         }
-        return summy / teamMembers.length;
+        return highest;
     }
 }
