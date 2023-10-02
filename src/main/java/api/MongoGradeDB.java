@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MongoGradeDB implements GradeDB {
     private static final String API_URL = "https://grade-logging-api.chenpan.ca/api/grade";
@@ -189,7 +189,34 @@ public class MongoGradeDB implements GradeDB {
     // TODO: Implement this method
     //       Hint: Read apiDocuments/getMyTeam.md and refer to the above
     //             methods to help you write this code (copy-and-paste + edit as needed).
-    public Team getMyTeam() {
-        return null;
+    public String[] getMyTeam() {
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Request request = new Request.Builder()
+                .url(String.format("https://grade-logging-api.chenpan.ca/team"))
+                .addHeader("Authorization", API_TOKEN)
+                .addHeader("Content-Type", "application/json")
+                .build();
+
+        try {
+            Response response = client.newCall(request).execute();
+            System.out.println(response);
+            JSONObject responseBody = new JSONObject(response.body().string());
+
+            if (responseBody.getInt("status_code") == 200) {
+                JSONObject team = responseBody.getJSONObject("team");
+                JSONArray membersArray = team.getJSONArray("members");
+                String[] members = new String[membersArray.length()];
+                for (int i = 0; i < membersArray.length(); i++) {
+                    members[i] = membersArray.getString(i);
+                }
+                return members;
+            } else {
+                throw new RuntimeException(responseBody.getString("message"));
+            }
+        }
+        catch (IOException | JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
